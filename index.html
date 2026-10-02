@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Яна и Джорджи</title>
+<meta name="description" content="Мы нашли друг друга. Приглашаем разделить с нами этот день — 27 ноября 2026, Шри-Ланка.">
+<meta name="theme-color" content="#171523">
+<!-- Link preview in Telegram (og:image must be an absolute URL) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gbagiryan.github.io/yana-georgi/">
+<meta property="og:title" content="Яна и Джорджи · 27 ноября 2026">
+<meta property="og:description" content="Мы нашли друг друга. Приглашаем разделить с нами этот особенный день — Шри-Ланка, Велигама.">
+<meta property="og:image" content="https://gbagiryan.github.io/yana-georgi/preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #171523;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, .80);
+    --faint: rgba(255, 255, 255, .62);
+    --lilac: #dcacf0;
+    --lilac-hi: #e8c8ff;
+    --line: rgba(205, 185, 235, .32);
+    --ink: #1c1628;
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ---------- starry sky ---------- */
+  .sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star {
+    position: absolute; border-radius: 50%; background: #fff;
+    animation: twinkle var(--d, 4s) ease-in-out var(--delay, 0s) infinite;
+  }
+  .spark { position: absolute; fill: #f3e6ff; animation: twinkle var(--d, 5s) ease-in-out var(--delay, 0s) infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: var(--o, .8); } 50% { opacity: calc(var(--o, .8) * .25); } }
+
+  /* ---------- layout ---------- */
+  .page {
+    position: relative; z-index: 1;
+    max-width: 940px; margin: 0 auto;
+    padding: max(22px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+    text-align: center;
+    overflow: hidden;
+  }
+  .caps {
+    font-family: var(--sans); font-weight: 500; text-transform: uppercase;
+    letter-spacing: .26em; font-size: clamp(10.5px, 1.45vw, 13.5px);
+  }
+  svg.i-spark { width: .85em; height: .85em; fill: currentColor; vertical-align: -.08em; }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 12px clamp(0px, 3vw, 48px) 0;
+    color: var(--muted);
+  }
+  header.top .nav { display: none; gap: .9em; align-items: center; }
+  header.top .nav svg { width: .8em; height: .8em; fill: var(--muted); }
+  @media (min-width: 680px) { header.top .nav { display: flex; } }
+
+  .kicker { margin: clamp(36px, 5vw, 42px) 0 0; color: var(--muted); }
+  h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(54px, 11.2vw, 106px); line-height: .98; letter-spacing: -.005em;
+    margin: .12em 0 .08em;
+    text-shadow: 0 0 40px rgba(220, 172, 240, .12);
+  }
+  h1 em { font-style: italic; color: var(--lilac-hi); font-size: .58em; padding: 0 .08em; text-shadow: 0 0 18px rgba(220, 172, 240, .45); }
+  .lead { font-family: var(--serif); font-size: clamp(25px, 3.9vw, 37px); margin: .1em 0 .55em; }
+  .intro {
+    max-width: 26.5em; margin: 0 auto; color: var(--muted);
+    font-size: clamp(15px, 2vw, 18.5px); line-height: 1.6; letter-spacing: .03em;
+    text-wrap: balance;
+  }
+
+  /* ---------- the arch ---------- */
+  .arch {
+    position: relative; width: min(590px, 88vw); aspect-ratio: 591 / 729;
+    margin: clamp(26px, 3.6vw, 34px) auto 0;
+  }
+  .arch::before, .arch::after {
+    content: ""; position: absolute; border: 1px solid var(--line);
+    border-radius: 1000px 1000px 0 0;
+  }
+  .arch::before { inset: 0; }
+  .arch::after { inset: 2.06% 2.55% 1.7%; }
+  .arch img {
+    position: absolute; left: 1.95%; top: 1.65%; width: 96.45%; height: auto;
+    filter: drop-shadow(0 0 24px rgba(220, 172, 240, .10));
+  }
+  .arch figcaption {
+    position: absolute; left: 0; right: 0; bottom: 3.3%;
+    display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.6vw, 16px);
+  }
+  .arch figcaption p {
+    margin: 0; font-family: var(--serif); font-style: italic;
+    font-size: clamp(16px, 2.6vw, 24px); color: rgba(255, 255, 255, .92);
+  }
+  .divider { display: flex; align-items: center; gap: 10px; color: var(--lilac-hi); }
+  .divider::before, .divider::after { content: ""; width: clamp(36px, 6vw, 56px); height: 1px; background: var(--line); }
+  .divider svg { width: 12px; height: 12px; fill: currentColor; }
+
+  /* ---------- when / where ---------- */
+  .details {
+    display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 clamp(16px, 4.5vw, 46px);
+    max-width: 760px; margin: clamp(28px, 4vw, 36px) auto 0; text-align: left;
+  }
+  .details .rule { background: var(--line); }
+  .details .label { color: var(--muted); margin: 0 0 .5em; }
+  .details .value { font-family: var(--serif); font-size: clamp(23px, 4.1vw, 38px); line-height: 1.15; margin: 0 0 .45em; }
+  .details .sub { color: var(--faint); font-size: clamp(9.5px, 1.35vw, 12.5px); margin: 0 0 .5em; line-height: 1.7; }
+  .details .sub b { color: var(--muted); font-weight: 600; }
+  .details > div:first-child { justify-self: end; }
+  @media (max-width: 460px) { .details { grid-template-columns: 1fr; gap: 22px; text-align: center; } .details .rule { display: none; } .details > div:first-child { justify-self: center; } }
+
+  /* ---------- RSVP ---------- */
+  .rsvp {
+    max-width: 760px; margin: clamp(26px, 3.5vw, 30px) auto 0;
+    border-top: 1px solid var(--line); padding-top: clamp(22px, 3vw, 28px);
+  }
+  .deadline { color: var(--muted); margin: 0; }
+  .deadline strong {
+    color: var(--lilac-hi); font-weight: 600; font-size: 1.25em; letter-spacing: .12em;
+    text-shadow: 0 0 14px rgba(220, 172, 240, .6);
+    border-bottom: 1px solid rgba(232, 200, 255, .7); padding-bottom: 2px; white-space: nowrap;
+  }
+  .name {
+    display: block; width: min(360px, 100%); margin: 22px auto 0;
+    background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    color: var(--text); font: 400 clamp(18px, 2.4vw, 21px) var(--serif); text-align: center;
+    padding: 8px 4px; border-radius: 0; outline: none; transition: border-color .2s;
+  }
+  .name::placeholder { color: rgba(255, 255, 255, .45); font-style: italic; }
+  .name:focus { border-bottom-color: var(--lilac); }
+  .name[hidden] { display: none; }
+  .name.shake { animation: shake .4s; border-bottom-color: #ff9fb8; }
+  @keyframes shake { 25% { transform: translateX(-6px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-3px); } }
+
+  .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.4vw, 22px); max-width: 700px; margin: 22px auto 0; }
+  .btn {
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .45em;
+    height: clamp(54px, 7vw, 66px); border-radius: 999px; cursor: pointer;
+    font: 400 clamp(20px, 2.8vw, 26px) var(--serif); letter-spacing: .01em;
+    transition: transform .15s ease, box-shadow .25s ease, background-color .25s ease, opacity .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn:focus-visible { outline: 2px solid var(--lilac-hi); outline-offset: 3px; }
+  .btn[disabled] { cursor: progress; opacity: .6; }
+  .btn-yes { background: var(--lilac); color: var(--ink); border: 0; box-shadow: 0 0 28px rgba(220, 172, 240, .25); }
+  .btn-yes:hover { background: #e6bff6; box-shadow: 0 0 36px rgba(220, 172, 240, .45); }
+  .btn-yes svg { width: 1em; height: 1em; fill: currentColor; }
+  .btn-no { background: transparent; color: var(--text); border: 1.5px solid rgba(243, 222, 254, .85); }
+  .btn-no:hover { background: rgba(243, 222, 254, .07); }
+
+  .status { min-height: 1.4em; margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+  .status a { color: var(--lilac-hi); }
+  .status.err { color: #ffb4c6; }
+
+  .thanks { display: none; margin-top: 22px; }
+  .thanks h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 4.4vw, 40px); margin: 0 0 .3em; }
+  .thanks p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .thanks button {
+    margin-top: 12px; background: none; border: 0; padding: 4px; cursor: pointer;
+    color: var(--lilac-hi); font: 500 13px var(--sans); letter-spacing: .14em; text-transform: uppercase;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .rsvp.done .ask { display: none; }
+  .rsvp.done .thanks { display: block; animation: rise .5s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+
+  .hug { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 2.4vw, 22px); color: rgba(255, 255, 255, .9); margin: 22px 0 0; }
+  .hug svg { width: .9em; height: .9em; fill: var(--lilac-hi); vertical-align: -.1em; margin-left: .35em; filter: drop-shadow(0 0 6px rgba(220, 172, 240, .6)); }
+
+  footer { position: relative; margin-top: clamp(22px, 3vw, 26px); padding-bottom: 8px; }
+  footer .divider { justify-content: center; }
+  footer .divider::before, footer .divider::after { width: clamp(70px, 19vw, 180px); }
+  footer .caps {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4em 1.2em;
+    color: var(--faint); margin: 18px 0 0; font-size: clamp(10px, 1.35vw, 12.5px);
+  }
+  footer .caps svg { width: .8em; height: .8em; fill: var(--muted); }
+
+  .flora { position: absolute; bottom: 0; width: clamp(62px, 16.2%, 152px); pointer-events: none; z-index: -1; }
+  .flora.l { left: 0; } .flora.r { right: 0; }
+
+  .burst { position: fixed; pointer-events: none; z-index: 10; width: 14px; height: 14px; fill: var(--lilac-hi);
+    animation: fly .9s ease-out forwards; }
+  @keyframes fly { to { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(.3); opacity: 0; } }
+
+  .demo {
+    position: fixed; left: 50%; top: 10px; transform: translateX(-50%); z-index: 20; width: max-content; max-width: calc(100% - 20px); text-align: center;
+    background: #ffcf6e; color: #2a1d00; font: 600 12px var(--sans); padding: 6px 12px; border-radius: 99px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .star, .spark { animation: none; }
+    .rsvp.done .thanks { animation: none; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="0 0 20 20"><path d="M10 0C10.9 6.4 13.6 9.1 20 10 13.6 10.9 10.9 13.6 10 20 9.1 13.6 6.4 10.9 0 10 6.4 9.1 9.1 6.4 10 0Z"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21.4 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5L12 21.4Z"/></symbol>
+  <symbol id="shroom" viewBox="0 0 24 24"><path d="M12 2.5C6.4 2.5 2.4 6.2 2 10.7c-.1.8.5 1.3 1.2 1.3h17.6c.7 0 1.3-.5 1.2-1.3C21.6 6.2 17.6 2.5 12 2.5Zm-2.6 10.6-.6 6.2c-.1 1.2.8 2.2 2 2.2h2.4c1.2 0 2.1-1 2-2.2l-.6-6.2H9.4Z"/></symbol>
+</svg>
+
+<div class="sky" aria-hidden="true"></div>
+
+<main class="page">
+  <header class="top caps">
+    <span>Я + Д</span>
+    <span>Наша маленькая свадьба</span>
+    <span class="nav" aria-hidden="true">Люди <svg><use href="#spark"/></svg> Места <svg><use href="#spark"/></svg> Магия</span>
+  </header>
+
+  <p class="kicker caps"><span id="greet"></span>Кажется, случилась магия</p>
+  <h1>Яна <em>и</em><br>Джорджи</h1>
+  <p class="lead">Мы нашли друг друга.</p>
+  <p class="intro">И теперь приглашаем вас разделить с нами этот особенный день — немного сказочного леса, немного странностей и очень много любви.</p>
+
+  <figure class="arch">
+    <img src="art.webp" width="570" height="647" alt="Светящиеся волшебные грибы под луной">
+    <figcaption>
+      <p>Свои люди. Своя маленькая магия.</p>
+      <span class="divider" aria-hidden="true"><svg><use href="#spark"/></svg></span>
+    </figcaption>
+  </figure>
+
+  <section class="details">
+    <div>
+      <p class="label caps">Когда</p>
+      <p class="value">27 ноября 2026</p>
+      <p class="sub caps">Начало в 05:30</p>
+    </div>
+    <span class="rule" aria-hidden="true"></span>
+    <div>
+      <p class="label caps">Где</p>
+      <p class="value">Шри-Ланка</p>
+      <p class="sub caps"><b>Велигама</b><br>Точное место сообщим отдельно</p>
+    </div>
+  </section>
+
+  <section class="rsvp" id="rsvp">
+    <div class="ask">
+      <p class="deadline caps">Пожалуйста, ответьте до <strong>4 октября</strong></p>
+      <input class="name" id="name" type="text" autocomplete="name" maxlength="80" placeholder="Как вас зовут?" aria-label="Ваше имя" hidden>
+      <div class="buttons">
+        <button class="btn btn-yes" type="button" data-answer="yes"><svg aria-hidden="true"><use href="#shroom"/></svg>Буду</button>
+        <button class="btn btn-no" type="button" data-answer="no">Не смогу</button>
+      </div>
+    </div>
+    <div class="thanks" aria-live="polite">
+      <h2 id="thanks-title"></h2>
+      <p id="thanks-text"></p>
+      <button type="button" id="change">Изменить ответ</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </section>
+
+  <p class="hug">В любом случае обнимаем.<svg aria-hidden="true"><use href="#heart"/></svg></p>
+
+  <footer>
+    <span class="divider" aria-hidden="true"><svg><use href="#spark"/></svg></span>
+    <p class="caps">Большие чувства <svg aria-hidden="true"><use href="#spark"/></svg> В хорошей компании</p>
+  </footer>
+  <img class="flora l" src="flora-left.webp" width="152" height="222" alt="">
+  <img class="flora r" src="flora-right.webp" width="152" height="222" alt="">
+</main>
+
+<script>
+/* ============================ НАСТРОЙКИ ============================
+ * 1. In Telegram, open @BotFather → /newbot → copy the token it gives you.
+ * 2. Open your new bot and press "Start" (each person who should get
+ *    notifications must do this once, otherwise Telegram rejects the message).
+ * 3. Open https://api.telegram.org/bot<TOKEN>/getUpdates in a browser and
+ *    copy "chat":{"id": ...} — that number is your chat id.
+ * The token is visible in the page source: use a bot made only for this
+ * invitation, and revoke it in @BotFather (/revoke) after the RSVP deadline.
+ * Write it as two parts split at the colon — ['1234567890', 'AA…'] — so bots
+ * that scan public GitHub repos for Telegram tokens don't recognise it.
+ * Until botToken is set the page runs in demo mode and sends nothing.
+ * ================================================================== */
+const CONFIG = {
+  botToken: ['', ''],           // ['1234567890', 'AA…'] — the token split at ':'
+  chatIds: [''],                // ['111111111', '222222222'] — you, Yana, or a group id
+  fallbackLink: '',             // optional, shown if sending fails: 'https://t.me/your_username'
+};
+
+const BOT_TOKEN = [].concat(CONFIG.botToken).filter(Boolean).join(':');
+const DEMO = !BOT_TOKEN;
+const STORE_KEY = 'rsvp-yana-georgi-2026';
+const $ = (s) => document.querySelector(s);
+const rsvp = $('#rsvp'), nameInput = $('#name'), statusEl = $('#status');
+const buttons = [...document.querySelectorAll('.btn')];
+
+/* ---- sky ---- */
+(function makeSky() {
+  const sky = $('.sky'), area = innerWidth * innerHeight;
+  const n = Math.min(160, Math.round(area / 6500));
+  let html = '';
+  for (let i = 0; i < n; i++) {
+    const s = Math.random() < .85 ? 1 + Math.random() : 2 + Math.random();
+    html += `<i class="star" style="left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${s}px;height:${s}px;` +
+            `--o:${(.25 + Math.random() * .7).toFixed(2)};--d:${(3 + Math.random() * 5).toFixed(1)}s;--delay:-${(Math.random() * 8).toFixed(1)}s"></i>`;
+  }
+  for (let i = 0; i < 10; i++) {
+    const s = 7 + Math.random() * 8;
+    html += `<svg class="spark" style="left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${s}px;height:${s}px;` +
+            `--o:${(.5 + Math.random() * .4).toFixed(2)};--d:${(4 + Math.random() * 4).toFixed(1)}s;--delay:-${(Math.random() * 8).toFixed(1)}s"><use href="#spark"/></svg>`;
+  }
+  sky.innerHTML = html;
+})();
+
+/* ---- guest name: from ?name=… (personal link) or typed in ---- */
+const params = new URLSearchParams(location.search);
+const clean = (s) => (s || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+const urlName = clean(params.get('name') || params.get('n') || params.get('guest'));
+let saved = null;
+try { saved = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) {}
+// A personal link for someone else opened on the same device starts fresh.
+if (saved && urlName && saved.name !== urlName) saved = null;
+
+if (urlName) $('#greet').textContent = urlName + ', ';
+else { nameInput.hidden = false; if (saved && saved.name) nameInput.value = saved.name; }
+
+const guestName = () => urlName || clean(nameInput.value);
+
+/* ---- Telegram ---- */
+async function sendToTelegram(text) {
+  if (DEMO) { console.info('[demo] would send to Telegram:\n' + text); await new Promise((r) => setTimeout(r, 700)); return; }
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  const ids = CONFIG.chatIds.filter(Boolean);
+  // URLSearchParams body = a "simple" CORS request; api.telegram.org rejects preflight (OPTIONS).
+  const results = await Promise.all(ids.map((chat_id) =>
+    fetch(url, { method: 'POST', body: new URLSearchParams({ chat_id, text }), signal: AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined })
+      .then((r) => r.json())
+      .catch((e) => ({ ok: false, description: String(e) }))
+  ));
+  results.forEach((r, i) => { if (!r.ok) console.warn('Telegram → ' + ids[i] + ': ' + r.description); });
+  if (!results.some((r) => r.ok)) throw new Error('not delivered');
+}
+
+function messageFor(answer, name, previous) {
+  const line = answer === 'yes' ? `✅ ${name} — будет!` : `❌ ${name} — не сможет`;
+  const changed = previous && previous !== answer ? '\n🔁 изменил(а) ответ' : '';
+  return `${line}${changed}\n🍄 Свадьба Яны и Джорджи · 27.11.2026`;
+}
+
+/* ---- UI ---- */
+function showDone(answer) {
+  const yes = answer === 'yes';
+  $('#thanks-title').textContent = yes ? 'Ура! Ждём вас' : 'Жаль, будем скучать';
+  $('#thanks-text').textContent = yes
+    ? 'Ответ у нас. Подробности и точное место пришлём ближе к дате.'
+    : 'Спасибо, что ответили. Мы будем думать о вас в этот день.';
+  rsvp.classList.add('done');
+}
+
+function burst(from) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const b = from.getBoundingClientRect(), cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+  for (let i = 0; i < 14; i++) {
+    const a = (Math.PI * 2 * i) / 14, d = 60 + Math.random() * 70;
+    const el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    el.setAttribute('class', 'burst');
+    el.innerHTML = '<use href="#spark"/>';
+    el.style.cssText = `left:${cx - 7}px;top:${cy - 7}px;--x:${Math.cos(a) * d}px;--y:${Math.sin(a) * d}px;--r:${Math.random() * 180}deg`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1000);
+  }
+}
+
+let sending = false;
+buttons.forEach((btn) => btn.addEventListener('click', async () => {
+  if (sending) return;
+  const name = guestName();
+  if (!name) {
+    nameInput.classList.remove('shake'); void nameInput.offsetWidth; nameInput.classList.add('shake');
+    nameInput.focus();
+    statusEl.className = 'status err';
+    statusEl.textContent = 'Напишите, пожалуйста, ваше имя — чтобы мы знали, кто ответил';
+    return;
+  }
+  const answer = btn.dataset.answer;
+  sending = true;
+  buttons.forEach((b) => (b.disabled = true));
+  statusEl.className = 'status';
+  statusEl.textContent = 'Отправляем…';
+  try {
+    await sendToTelegram(messageFor(answer, name, saved && saved.name === name && saved.answer));
+    saved = { answer, name };
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) {}
+    statusEl.textContent = '';
+    if (answer === 'yes') burst(btn);
+    showDone(answer);
+  } catch (e) {
+    statusEl.className = 'status err';
+    statusEl.innerHTML = 'Не получилось отправить ответ. Попробуйте ещё раз' +
+      (CONFIG.fallbackLink ? ` или <a href="${CONFIG.fallbackLink}" target="_blank" rel="noopener">напишите нам</a>` : '') + '.';
+  } finally {
+    sending = false;
+    buttons.forEach((b) => (b.disabled = false));
+  }
+}));
+
+$('#change').addEventListener('click', () => {
+  rsvp.classList.remove('done');
+  statusEl.textContent = '';
+});
+
+if (saved && saved.answer) showDone(saved.answer);
+
+if (DEMO) {
+  const badge = document.createElement('div');
+  badge.className = 'demo';
+  badge.textContent = 'Демо-режим: Telegram не настроен, ответы никуда не уходят';
+  document.body.appendChild(badge);
+}
+</script>
+</body>
+</html>
