@@ -295,6 +295,9 @@
  * Write it as two parts split at the colon — ['1234567890', 'AA…'] — so bots
  * that scan public GitHub repos for Telegram tokens don't recognise it.
  * Until botToken is set the page runs in demo mode and sends nothing.
+ * Open inside Telegram: @BotFather → /mybots → your bot → Bot Settings →
+ * Configure Mini App → Enable Mini App → send this page's URL. Then share
+ * https://t.me/<your_bot>?startapp — the invite opens over the chat.
  * ================================================================== */
 const CONFIG = {
   botToken: ['8684551339', 'AAFUmA89AmtSKRTSyAPfw4ItiSAqTLaGLqM'],           // ['1234567890', 'AA…'] — the token split at ':'
@@ -327,19 +330,47 @@ const buttons = [...document.querySelectorAll('.btn')];
   sky.innerHTML = html;
 })();
 
-/* ---- guest name: from ?name=… (personal link) or typed in ---- */
+/* ---- guest name: personal link ?name=…, the Telegram account (Mini App), or typed in ---- */
 const params = new URLSearchParams(location.search);
 const clean = (s) => (s || '').replace(/\s+/g, ' ').trim().slice(0, 80);
 const urlName = clean(params.get('name') || params.get('n') || params.get('guest'));
+// Opened as a Telegram Mini App, the page gets the guest's account in the hash (#tgWebAppData=…).
+let tgUser = null;
+try { tgUser = JSON.parse(new URLSearchParams(new URLSearchParams(location.hash.slice(1)).get('tgWebAppData') || '').get('user')); } catch (e) {}
+const tgName = tgUser ? clean([tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ')) : '';
+const fixedName = urlName || tgName;
 let saved = null;
 try { saved = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) {}
 // A personal link for someone else opened on the same device starts fresh.
-if (saved && urlName && saved.name !== urlName) saved = null;
+if (saved && fixedName && saved.name !== fixedName) saved = null;
 
-if (urlName) $('#greet').textContent = urlName + ', ';
-else { nameInput.hidden = false; if (saved && saved.name) nameInput.value = saved.name; }
+const greetName = urlName || (tgUser && clean(tgUser.first_name));
+if (greetName) $('#greet').textContent = greetName + ', ';
+if (!fixedName) { nameInput.hidden = false; if (saved && saved.name) nameInput.value = saved.name; }
 
-const guestName = () => urlName || clean(nameInput.value);
+const guestName = () => fixedName || clean(nameInput.value);
+// In the notification, add the @username so you know exactly which Telegram account answered.
+const whoAnswered = (name) => (tgUser && tgUser.username && name === tgName ? `${name} (@${tgUser.username})` : name);
+
+/* ---- inside Telegram: match the app's top bar to the page ---- */
+let tg = null;
+if (/tgWebApp/.test(location.hash)) {
+  const sdk = document.createElement('script');
+  sdk.src = 'https://telegram.org/js/telegram-web-app.js';
+  sdk.onload = () => {
+    tg = window.Telegram && window.Telegram.WebApp;
+    if (!tg) return;
+    tg.ready();
+    tg.expand();
+    try {
+      tg.setHeaderColor('#171523');
+      tg.setBackgroundColor('#171523');
+      if (tg.setBottomBarColor) tg.setBottomBarColor('#171523');
+      if (tg.disableVerticalSwipes) tg.disableVerticalSwipes(); // scrolling up shouldn't close the invite
+    } catch (e) {}
+  };
+  document.head.appendChild(sdk);
+}
 
 /* ---- Telegram ---- */
 async function sendToTelegram(text) {
@@ -403,10 +434,11 @@ buttons.forEach((btn) => btn.addEventListener('click', async () => {
   statusEl.className = 'status';
   statusEl.textContent = 'Отправляем…';
   try {
-    await sendToTelegram(messageFor(answer, name, saved && saved.name === name && saved.answer));
+    await sendToTelegram(messageFor(answer, whoAnswered(name), saved && saved.name === name && saved.answer));
     saved = { answer, name };
     try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) {}
     statusEl.textContent = '';
+    if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
     if (answer === 'yes') burst(btn);
     showDone(answer);
   } catch (e) {
